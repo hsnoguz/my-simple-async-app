@@ -6,7 +6,7 @@ import {BrowserRouter as Router,Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar'
 import Home  from './pages/Home'
 import Products from './pages/Products'
-import Reports from './pages/Reports'
+import FunctionHook from './pages/FunctionHook'
 import './App.css'
 // App.js
 export class App extends Component {
@@ -19,7 +19,7 @@ export class App extends Component {
           <Switch>
             <Route path='/' exact component={Home}></Route>
             <Route path='/products' component={Products}></Route>
-            <Route path='/reports' component={Reports}></Route>
+            <Route path='/functionhook' component={FunctionHook}></Route>
           </Switch>
         </Router>
     </div>
