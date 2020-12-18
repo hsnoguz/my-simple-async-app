@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {BrowserRouter as Router,Switch, Route } from 'react-router-dom';
 import { getRepos } from '../actions/githupActions';
 
-const FunctionHook=({repos,getRepos})=> {
+const FunctionHook=({repos,setting,getRepos})=> {
     const [userName,setUserName]=useState("hsnoguz");
     const handleChange=e=>{
         setUserName(e.target.value);
@@ -15,16 +15,18 @@ const FunctionHook=({repos,getRepos})=> {
         
         if (userName=="") return;
         getRepos(userName);
-    };
+
+    }
 
     useEffect(()=>{
         if (userName=="") return;
+       // console.log("test");
         getRepos(userName);
 
-    })
+    },[])
 
     return (
-        <div className="reports">
+        <div className={setting.slider ? 'home active':'home'}>
         <h1>Report-FunctionHook</h1>
 
         <strong>Github username: </strong>
@@ -52,7 +54,7 @@ const FunctionHook=({repos,getRepos})=> {
 }
 
 
-const mapStateToProps = (state, ownProps) => ({ repos: state.repos });
+const mapStateToProps = (state, ownProps) => ({ repos: state.repos,setting:state.setting });
 const mapDispatchToProps =dispatch=> {
         return{
              getRepos:userName=>dispatch(getRepos(userName))

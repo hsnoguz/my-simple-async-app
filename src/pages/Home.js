@@ -3,9 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {BrowserRouter as Router,Switch, Route } from 'react-router-dom';
 import { getRepos } from '../actions/githupActions';
-
 export class Home extends Component {
-    state = { username: 'tylerbuchea' };
+    state = { username: 'tylerbuchea'};
   
     componentDidMount() {
       this.updateRepoList(this.state.username);
@@ -16,7 +15,7 @@ export class Home extends Component {
     render() {
       return (
   
-        <div className="home">
+        <div className={this.props.setting.slider ? 'home active':'home'}>
             <h1>I AM AN ASYNC APP!!!</h1>
 
             <strong>Github username: </strong>
@@ -45,8 +44,8 @@ export class Home extends Component {
 }
 
 
-const mapStateToProps = (state, ownProps) => ({ repos: state.repos });
+const mapStateToProps = (state, ownProps) => ({ repos: state.repos,setting:state.setting });
 const mapDispatchToProps = { getRepos };
-const AppContainer = connect(mapStateToProps, mapDispatchToProps)(Home);
+const HomeContainer = connect(mapStateToProps, mapDispatchToProps)(Home);
 
-export default AppContainer;
+export default HomeContainer;

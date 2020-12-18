@@ -4,26 +4,28 @@ import * as FaIcons from "react-icons/fa"
 import * as AiIcons from "react-icons/ai"
 import {SidebarData} from './SidebarData'
 import './Navbar.css'
-function Navbar() {
+function Navbar(props) {
+    const {parentsideBar,changeSidebar}=props;
+    
     const [sidebar,setSideBar]=useState(false)
+
 const showSideBar=()=> setSideBar(!sidebar)
     return (
-        <>
+        
+    <>
          <div className="navbar">
          <Link to="#" className="menu-bars">
-             <FaIcons.FaBars onClick={showSideBar}></FaIcons.FaBars>
+             <FaIcons.FaBars onClick={changeSidebar}></FaIcons.FaBars>
              </Link>    
           </div>  
-          <nav className={sidebar ? 'nav-menu active':'nav-menu'}>
-          <ul className='nav-menu-items' onClick={showSideBar}>
+          <nav className={parentsideBar ? 'nav-menu active':'nav-menu'}>
+          <ul className='nav-menu-items' onClick={changeSidebar}>
             <li className="navbar-toggle"  >
                 <Link to="#" className="menu-bars">
                 <AiIcons.AiOutlineClose></AiIcons.AiOutlineClose>    
                 </Link>                
             </li>
-          {
-              console.log (SidebarData)
-          }
+          
             { 
             
                 SidebarData.map((item,index)=>{
